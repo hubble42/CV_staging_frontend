@@ -25,9 +25,11 @@ function ImageComponent(props) {
   const [isViewerOpen, setIsViewerOpen] = useState(false);
   const { videoUrl } = props;
   const { isChecked } = props;
+  const { filePath } = props;
   const openImageViewer = useCallback(() => {
     setIsViewerOpen(true);
   }, []);
+  console.log(filePath);
   const closeImageViewer = () => {
     setIsViewerOpen(false);
   };
@@ -212,7 +214,7 @@ function ImageComponent(props) {
                       // objectFit="contain"
                       onClick={openImageViewer}
                       loading="eager"
-                      src={videoUrl}
+                      src={URL.createObjectURL(props.file)}
                       alt="Chakra UI"
                     />
                     {isViewerOpen && (
@@ -349,7 +351,7 @@ function ImageComponent(props) {
                       // objectFit="contain"
                       onClick={openImageViewer}
                       loading="eager"
-                      src={videoUrl}
+                      src={URL.createObjectURL(props.file)}
                       alt="Chakra UI"
                     />
                     {isViewerOpen && (

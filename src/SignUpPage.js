@@ -30,7 +30,9 @@ const Signup = () => {
     })
       .then((response) => {
         if (response.status === 200) {
-          window.location.href = "/login";
+          window.location.href = "/";
+        } else if (response.status === 401) {
+          alert("User already exist");
         }
       })
       .catch((error) => {

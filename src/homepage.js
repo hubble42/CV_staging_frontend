@@ -15,6 +15,7 @@ import {
   //   SubMenu,
   useProSidebar,
 } from "react-pro-sidebar";
+import { useDropzone } from "react-dropzone";
 
 function Home() {
   const { collapseSidebar, collapsed } = useProSidebar();
@@ -25,9 +26,21 @@ function Home() {
   const [imageSrc, setImageSrc] = useState(null);
   const [imageSrc1, setImageSrc1] = useState(null);
   const [videoUrl, setVideoUrl] = useState(null);
+  const [filePath, setFilePath] = useState(null);
   const [selectedObjects, setSelectedObjects] = useState([]);
   const [loading, setLoading] = useState(false);
   const [options, setoptions] = useState(false);
+  const [file, setFile] = useState(null);
+  const handleFileChange = (acceptedFiles) => {
+    if (acceptedFiles && acceptedFiles.length > 0) {
+      setFile(acceptedFiles[0]);
+    }
+  };
+  const { getRootProps, getInputProps, isDragActive } = useDropzone({
+    accept: "video/mp4",
+    maxFiles: 1,
+    onDrop: handleFileChange,
+  });
   function handleCheckboxChange() {
     setIsChecked(!isChecked);
   }
@@ -113,6 +126,13 @@ function Home() {
                   loading={loading}
                   selectedObjects={selectedObjects}
                   setVideoUrl={setVideoUrl}
+                  setFilePath={setFilePath}
+                  setFile={setFile}
+                  handleFileChange={handleFileChange}
+                  getRootProps={getRootProps}
+                  getInputProps={getInputProps}
+                  isDragActive={isDragActive}
+                  file={file}
                 />
               </>
             )}
@@ -138,6 +158,13 @@ function Home() {
                   loading={loading}
                   selectedObjects={selectedObjects}
                   setVideoUrl={setVideoUrl}
+                  setFilePath={setFilePath}
+                  setFile={setFile}
+                  handleFileChange={handleFileChange}
+                  getRootProps={getRootProps}
+                  getInputProps={getInputProps}
+                  isDragActive={isDragActive}
+                  file={file}
                 />
               </div>
             )}
@@ -160,7 +187,7 @@ function Home() {
 
       {/* main-content */}
 
-      <div className="main-content container mx-auto px-24 py-12">
+      <div className="main-content container flex  d-flex justify-center mx-auto px-24 py-12">
         {imageSrc || videoUrl ? (
           <ImageComponent
             options={options}
@@ -168,6 +195,8 @@ function Home() {
             imageSrc1={imageSrc1}
             videoUrl={videoUrl}
             isChecked={isChecked}
+            filePath={filePath}
+            file={file}
           />
         ) : (
           <div>

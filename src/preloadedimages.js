@@ -18,6 +18,7 @@ function PreLoadedImages(props) {
     <>
       <div className="media">
         <h1>Pre-loaded Images:</h1>
+        <p>Select at least one class:</p>
         {objects.length > 0 && (
           <Select
             options={options}

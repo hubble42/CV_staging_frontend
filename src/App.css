@@ -1,6 +1,6 @@
 body,h1,h2,h3,h4,a,span,p{
   font-family: 'Source Sans Pro', sans-serif !important;
-  padding: 0;
+  
 }
 
 
@@ -63,6 +63,7 @@ body,h1,h2,h3,h4,a,span,p{
   font-size: 26px;
   font-weight: 800;
   padding-bottom: 20px;
+  
 }
 .sidebar-item h2{
   font-weight: 600;
@@ -100,7 +101,7 @@ h1{
   top: 0.5rem;
   left: 0.25rem;
   z-index: 999990;
-  transition: left 300ms ease 0s;
+  /* transition: left 300ms ease 0s; */
   color: rgb(49, 51, 63);
 }
 .css-exc098[aria-checked=true], .css-exc098[data-checked]{

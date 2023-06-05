@@ -36,7 +36,6 @@ function App() {
           />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/home" element={<Home />} />
-          {loggedIn ? <></> : <Route element={<Login />} />}
         </Routes>
       </div>
     </Router>

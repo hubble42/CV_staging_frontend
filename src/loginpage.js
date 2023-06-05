@@ -26,7 +26,7 @@ const Login = (props) => {
     // const formData = new FormData();
     // formData.append('email', email);
     // formData.append('password',password);
-    fetch("http://192.168.1.27:8000/userslogin/", {
+    fetch("http://127.0.0.1:8000/login/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,6 +36,8 @@ const Login = (props) => {
       .then((response) => {
         if (response.status === 200) {
           props.handleLogin();
+        } else if (response.status === 401) {
+          alert("Ivalid email or password");
         }
       })
       .catch((error) => {
